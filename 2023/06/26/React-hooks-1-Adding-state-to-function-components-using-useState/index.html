@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>[React hooks] 1:Adding state to function components using useState() - SoulflareRC&#39;s blog!</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Soulflare,"> 
+    <meta name="description" content="Sharing moments of my life,
+
+State is a common concept when using class components with react. When coding in class components,"> 
+    <meta name="author" content="SoulflareRC"> 
+    <link rel="alternative" href="atom.xml" title="SoulflareRC&#39;s blog!" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="[React hooks] 1:Adding state to function components using useState() - SoulflareRC&#39;s blog!"/>
+    <meta name="twitter:description" content="Sharing moments of my life,
+
+State is a common concept when using class components with react. When coding in class components,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="Sharing moments of my life,
+
+State is a common concept when using class components with react. When coding in class components,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="SoulflareRC&#39;s blog!"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="[React hooks] 1:Adding state to function components using useState() - SoulflareRC&#39;s blog!"/>
+    <meta property="og:description" content="Sharing moments of my life,
+
+State is a common concept when using class components with react. When coding in class components,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">SoulflareRC&#39;s blog!</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://localhost:4000"></a>
+    <div title="play/pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">[React hooks] 1:Adding state to function components using useState()</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="QRCode" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">[React hooks] 1:Adding state to function components using useState()</h1>
+        <div class="stuff">
+            <span>June 26, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Frontend/" rel="tag">Frontend</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/React/" rel="tag">React</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hooks/" rel="tag">hooks</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><img src="/img/posts/2.jpg" alt="image"></p>
+<blockquote>
+<p>State is a common concept when using class components with react. When coding in class components, we usually set the initial state in <code>constructor()</code> using <code>this.state = &#123;...&#125;</code>. <br><br>Accordingly, whenever <code>this.state</code> is updated using <code>this.setState()</code>, a <strong>re-render</strong> will be triggered, using the value from the new state. </p>
+</blockquote>
+<h3 id="Why-using-useState"><a href="#Why-using-useState" class="headerlink" title="Why using useState()?"></a>Why using <code>useState()</code>?</h3><p><code>useState()</code> is one of the most commonly used hooks that gives a <strong>function component</strong> state. Similar to class components, a re-render will be triggered if the function component used the variable declared using <code>useState()</code>. </p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>Common usage of <code>useState()</code> looks like this </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27; //Don&#x27;t forget the import statement!!!</span><br><span class="line">...</span><br><span class="line">const [x,setX] = useState(&lt;initialState&gt;); </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>The code above is similar to </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">constructor()&#123;</span><br><span class="line">    this.state = &#123;</span><br><span class="line">        ...</span><br><span class="line">        x = &lt;initialState&gt;, //set x to its initial value</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    this.setX = (newX) =&gt; &#123;</span><br><span class="line">        this.setState(&#123;...this.state,newX&#125;) // set x to newVar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if we were using a class component. <br><br>As shown above, in the first snipplet, we </p>
+<ol>
+<li>Declared a variable <code>x</code></li>
+<li>Set the value of <code>x</code> to <code>&lt;initialState&gt;</code>, where <code>&lt;initialState&gt;</code> can be anything like <code>false</code>,<code>null</code>,<code>1</code>,<code>[]</code> depending on the type of variable <code>x</code></li>
+<li>Declared a function <code>setX</code> to update the value of <code>x</code> and trigger a re-render of any component using <code>x</code></li>
+</ol>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Take the <a target="_blank" rel="noopener" href="https://github.com/john-smilga/react-projects/tree/master/01-birthday-reminder">birthday reminder project</a> as an example<br><img src="/img/posts/bday-reminder.png" alt="image"><br>Here we have a list of people. Judging from the information presented to us, we have (at least) each person&#39;s </p>
+<ol>
+<li><code>icon image link</code></li>
+<li><code>Name</code></li>
+<li><code>Age</code><br>What we care about the most is this line <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [people, setPeople] = useState(data)</span><br></pre></td></tr></table></figure>
+which handles the logic “Clear list when the <code>Clear All</code> button was clicked”. Since <code>people</code> is supposed to be an array, <code>setPeople([])</code> sets <code>people</code> to an empty array, achieving the effect of clearing the list.<br>This line hooks the action up when the <code>Clear All</code> button was clicked. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;() =&gt; setPeople([])&#125;&gt;clear all&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+When <code>setPeople([])</code> is called, the value of <code>people</code> is updated to <code>[]</code>(empty array), and since <code>&lt;List/&gt;</code> uses <code>people</code>, it will be re-rendered and become an empty list.</li>
+</ol>
+<h3 id="Wait-a-minute🤔"><a href="#Wait-a-minute🤔" class="headerlink" title="Wait a minute🤔"></a>Wait a minute🤔</h3><p>You might want to do this when debugging and see if people has actually changed</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;() =&gt;&#123;</span><br><span class="line">    setPeople([])</span><br><span class="line">    console.log(people)</span><br><span class="line">&#125;&#125;&gt;clear all&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>Surprisingly, this will still print out the people array instead of an empty array. <br><br>This is because in React, the <code>useState</code> hook is <strong>asynchronous</strong>, meaning that the updated state value is not immediately available in the next line of code after calling the state setter function. Therefore, when you call <code>setPeople([])</code> and immediately log the value of people, you will still see the previous value (in this case, <code>data</code>) because the state update hasn’t taken effect yet.<br>According to the official documentation: </p>
+<blockquote>
+<p>The set function only updates the state variable for the next render. If you read the state variable after calling the set function, you will still get the old value that was on the screen before your call.<br>Meaning that your <code>console.log()</code> will never get the updated value since the updated value lives in the next render. </p>
+</blockquote>
+<h3 id="Updating-state-based-on-the-previous-state"><a href="#Updating-state-based-on-the-previous-state" class="headerlink" title="Updating state based on the previous state"></a>Updating state based on the previous state</h3><p>Another syntax that comes in handy is to update the state based on previous state. For example, the previous snipplet that sets <code>people</code> to <code>[]</code> can be written as </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setPeople(people=&gt;[])</span><br></pre></td></tr></table></figure>
+<p>or </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setPeople(people6=&gt;&#123;</span><br><span class="line">    //this is an updater function</span><br><span class="line">    return []; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="To-pass-a-state"><a href="#To-pass-a-state" class="headerlink" title="To pass a state"></a>To pass a state</h3><p>In the birthday-reminder project, there’s such a line using <code>&lt;List people=&#123;people&#125; /&gt;</code>, which passes the state <code>people</code> to be used by the <code>List</code> component.<br>Accordingly, the <code>List</code> component should also be ready to retrieve <code>people</code>. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const List = (&#123; people &#125;) =&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        ... </span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now <code>people</code> is accessible by code inside of <code>List</code> component. </p>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>A component can have many variables declared using <code>useState()</code>, they are independent of each other, but the state updates are <strong>batched</strong>(only one rerender in a single event)</li>
+<li>A re-render is only triggered when state is <strong>update</strong>, which means that no re-render happens if the new state is the same as the current state. </li>
+<li>DON’T try to update the state by directly changing its value such as <code>people[0] = null</code> since state is designed to be <strong>read-only</strong></li>
+<li>Follow the rules of using React hooks: <ol>
+<li>Don’t call <code>useState()</code> in loops, condition, nested functions</li>
+<li>Only call <code>useState()</code> inside function components or custom hooks.</li>
+</ol>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/422977895.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        <!-- 
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >Comments</div>
+
+ -->
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

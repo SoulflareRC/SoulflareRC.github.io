@@ -1,36 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/06/18/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>My awesome blog!</title>
-    <url>/2023/06/20/test_blog/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Tech</category>
-        <category>Art</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>React:useState and useEffect</title>
-    <url>/2023/06/21/React-useState-and-useEffect/</url>
+    <title>React:Using hooks with function based components</title>
+    <url>/2023/06/26/React-Using-hooks-with-function-based-components/</url>
     <content><![CDATA[<p><img src="/img/posts/1.jpg" alt="image"></p>
+<blockquote>
+<p>Nowadays, function based components has become a more recommended approach in modern React development, and React&#39;s &quot;hooks&quot; is one of the most important contributors of this ecosystem. This series serves as a study note during my study with the hands-on React projects found on <a href="https://github.com/john-smilga/react-projects">john-smilga&#39;s repo</a></p>
+</blockquote>
+<p><a href="https://react.dev/reference/react">Official documentation of React hooks</a></p>
+<h3 id="Why-using-hooks"><a href="#Why-using-hooks" class="headerlink" title="Why using hooks? "></a>Why using hooks? <hr></h3><p>React hooks allows function components to have features that only class components have before. For example, state management and lifecycle methods. </p>
+<h3 id="Benefits-of-using-hooks"><a href="#Benefits-of-using-hooks" class="headerlink" title="Benefits of using hooks "></a>Benefits of using hooks <hr></h3><ul>
+<li>Simplified component logic: Hooks help reduce code duplication and make it easier to understand and maintain component logic.</li>
+<li>Improved reusability: Hooks allow you to encapsulate and reuse stateful logic across multiple components.</li>
+<li>No need for class components: Hooks eliminate the need for class-based components, promoting the use of function components.</li>
+</ul>
+<h3 id="Class-component-vs-Function-component"><a href="#Class-component-vs-Function-component" class="headerlink" title="Class component vs Function component "></a>Class component vs Function component <hr></h3><p>Class component:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Something extends React.Component &#123;</span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props);</span><br><span class="line">        ...//state logic, binding event handlers, etc. </span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        ...//handle internal logic</span><br><span class="line">        return (</span><br><span class="line">            //JSX component</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Function component:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const something = () =&gt; &#123; //using arrow function syntax </span><br><span class="line">    return (</span><br><span class="line">        //JSX component </span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>By using hooks like useState and useEffect, you can effectively manage state and side effects. Custom hooks further enhance code reuse and modularity. With a good understanding of hooks, you can write cleaner, more maintainable code in your React applications.</p>
+<ul>
+<li><a href="!--swig%EF%BF%BC3--">React:Using hooks with function based components</a></li>
+</ul>
 ]]></content>
+      <tags>
+        <tag>React</tag>
+        <tag>hooks</tag>
+        <tag>Frontend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[React hooks] 1:Adding state to function components using useState()</title>
+    <url>/2023/06/26/React-hooks-1-Adding-state-to-function-components-using-useState/</url>
+    <content><![CDATA[<p><img src="/img/posts/2.jpg" alt="image"></p>
+<blockquote>
+<p>State is a common concept when using class components with react. When coding in class components, we usually set the initial state in <code>constructor()</code> using <code>this.state = &#123;...&#125;</code>. <br><br>Accordingly, whenever <code>this.state</code> is updated using <code>this.setState()</code>, a <strong>re-render</strong> will be triggered, using the value from the new state. </p>
+</blockquote>
+<h3 id="Why-using-useState"><a href="#Why-using-useState" class="headerlink" title="Why using useState()?"></a>Why using <code>useState()</code>?</h3><p><code>useState()</code> is one of the most commonly used hooks that gives a <strong>function component</strong> state. Similar to class components, a re-render will be triggered if the function component used the variable declared using <code>useState()</code>. </p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>Common usage of <code>useState()</code> looks like this </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27; //Don&#x27;t forget the import statement!!!</span><br><span class="line">...</span><br><span class="line">const [x,setX] = useState(&lt;initialState&gt;); </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>The code above is similar to </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">constructor()&#123;</span><br><span class="line">    this.state = &#123;</span><br><span class="line">        ...</span><br><span class="line">        x = &lt;initialState&gt;, //set x to its initial value</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    this.setX = (newX) =&gt; &#123;</span><br><span class="line">        this.setState(&#123;...this.state,newX&#125;) // set x to newVar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if we were using a class component. <br><br>As shown above, in the first snipplet, we </p>
+<ol>
+<li>Declared a variable <code>x</code></li>
+<li>Set the value of <code>x</code> to <code>&lt;initialState&gt;</code>, where <code>&lt;initialState&gt;</code> can be anything like <code>false</code>,<code>null</code>,<code>1</code>,<code>[]</code> depending on the type of variable <code>x</code></li>
+<li>Declared a function <code>setX</code> to update the value of <code>x</code> and trigger a re-render of any component using <code>x</code></li>
+</ol>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Take the <a href="https://github.com/john-smilga/react-projects/tree/master/01-birthday-reminder">birthday reminder project</a> as an example<br><img src="/img/posts/bday-reminder.png" alt="image"><br>Here we have a list of people. Judging from the information presented to us, we have (at least) each person&#39;s </p>
+<ol>
+<li><code>icon image link</code></li>
+<li><code>Name</code></li>
+<li><code>Age</code><br>What we care about the most is this line <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const [people, setPeople] = useState(data)</span><br></pre></td></tr></table></figure>
+which handles the logic “Clear list when the <code>Clear All</code> button was clicked”. Since <code>people</code> is supposed to be an array, <code>setPeople([])</code> sets <code>people</code> to an empty array, achieving the effect of clearing the list.<br>This line hooks the action up when the <code>Clear All</code> button was clicked. <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;button onClick=&#123;() =&gt; setPeople([])&#125;&gt;clear all&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+When <code>setPeople([])</code> is called, the value of <code>people</code> is updated to <code>[]</code>(empty array), and since <code>&lt;List/&gt;</code> uses <code>people</code>, it will be re-rendered and become an empty list.</li>
+</ol>
+<h3 id="Wait-a-minute🤔"><a href="#Wait-a-minute🤔" class="headerlink" title="Wait a minute🤔"></a>Wait a minute🤔</h3><p>You might want to do this when debugging and see if people has actually changed</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;button onClick=&#123;() =&gt;&#123;</span><br><span class="line">    setPeople([])</span><br><span class="line">    console.log(people)</span><br><span class="line">&#125;&#125;&gt;clear all&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>Surprisingly, this will still print out the people array instead of an empty array. <br><br>This is because in React, the <code>useState</code> hook is <strong>asynchronous</strong>, meaning that the updated state value is not immediately available in the next line of code after calling the state setter function. Therefore, when you call <code>setPeople([])</code> and immediately log the value of people, you will still see the previous value (in this case, <code>data</code>) because the state update hasn’t taken effect yet.<br>According to the official documentation: </p>
+<blockquote>
+<p>The set function only updates the state variable for the next render. If you read the state variable after calling the set function, you will still get the old value that was on the screen before your call.<br>Meaning that your <code>console.log()</code> will never get the updated value since the updated value lives in the next render. </p>
+</blockquote>
+<h3 id="Updating-state-based-on-the-previous-state"><a href="#Updating-state-based-on-the-previous-state" class="headerlink" title="Updating state based on the previous state"></a>Updating state based on the previous state</h3><p>Another syntax that comes in handy is to update the state based on previous state. For example, the previous snipplet that sets <code>people</code> to <code>[]</code> can be written as </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">setPeople(people=&gt;[])</span><br></pre></td></tr></table></figure>
+<p>or </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">setPeople(people6=&gt;&#123;</span><br><span class="line">    //this is an updater function</span><br><span class="line">    return []; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="To-pass-a-state"><a href="#To-pass-a-state" class="headerlink" title="To pass a state"></a>To pass a state</h3><p>In the birthday-reminder project, there’s such a line using <code>&lt;List people=&#123;people&#125; /&gt;</code>, which passes the state <code>people</code> to be used by the <code>List</code> component.<br>Accordingly, the <code>List</code> component should also be ready to retrieve <code>people</code>. </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const List = (&#123; people &#125;) =&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        ... </span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now <code>people</code> is accessible by code inside of <code>List</code> component. </p>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>A component can have many variables declared using <code>useState()</code>, they are independent of each other, but the state updates are <strong>batched</strong>(only one rerender in a single event)</li>
+<li>A re-render is only triggered when state is <strong>update</strong>, which means that no re-render happens if the new state is the same as the current state. </li>
+<li>DON’T try to update the state by directly changing its value such as <code>people[0] = null</code> since state is designed to be <strong>read-only</strong></li>
+<li>Follow the rules of using React hooks: <ol>
+<li>Don’t call <code>useState()</code> in loops, condition, nested functions</li>
+<li>Only call <code>useState()</code> inside function components or custom hooks.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>React</tag>
+        <tag>hooks</tag>
+        <tag>Frontend</tag>
+      </tags>
   </entry>
 </search>
