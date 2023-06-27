@@ -23,10 +23,97 @@
 <li><a href="!--swig%EF%BF%BC3--">React:Using hooks with function based components</a></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
       <tags>
         <tag>React</tag>
         <tag>hooks</tag>
         <tag>Frontend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NPM basic usage</title>
+    <url>/2023/06/27/NPM-basic-usage/</url>
+    <content><![CDATA[<img src="/2023/06/27/NPM-basic-usage/cover.jpg" class="">
+<blockquote>
+<p> NPM in a <em><strong>package management</strong></em> tool that&#39;s (usually) installed with Node.js. If you know python, npm is just like pip to python. It allows developers to easily install, manage, and share reusable code packages (also known as modules or packages) with their projects. npm provides access to a vast collection of open-source libraries and tools, enabling developers to leverage existing solutions and accelerate development.</p>
+</blockquote>
+<h3 id="Verify-installation"><a href="#Verify-installation" class="headerlink" title="Verify installation"></a>Verify installation</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>This command should print out npm&#39;s version if installed correctly.</p>
+<h3 id="Install-modules"><a href="#Install-modules" class="headerlink" title="Install modules"></a>Install modules</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install &lt;Module name&gt;</span><br></pre></td></tr></table></figure>
+<p>For example, to install <code>axios</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+<p>To use the installed <code>axios</code> package</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const axios = require(&#x27;axios&#x27;);</span><br></pre></td></tr></table></figure>
+<p>or following the ES6 syntax</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import axios from &#x27;axios&#x27;</span><br></pre></td></tr></table></figure>
+<p>Install globally </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install &lt;Module name&gt; -g</span><br></pre></td></tr></table></figure>
+<p>Uninstall a module</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall &lt;Module name&gt;</span><br></pre></td></tr></table></figure>
+<p>List all installed modules</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
+<p>Search a module</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm search &lt;Module name&gt;</span><br></pre></td></tr></table></figure>
+<p>Update a module</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update &lt;Module name&gt;</span><br></pre></td></tr></table></figure>
+<p>If you interrupted a previous <code>npm install</code> and now it’s giving errors, you can clear the previously installed <code>node_modules</code> by </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm cache clean</span><br></pre></td></tr></table></figure>
+<h3 id="Configure-npm-registry"><a href="#Configure-npm-registry" class="headerlink" title="Configure npm registry"></a>Configure npm registry</h3><blockquote>
+<p>NPM registries are the hub of npm packages, and when you do <code>npm install</code>, you are downloading packages from one of the registries.  Sometimes using the wrong registry might cause <code>npm install</code> to be extremely slow. The default npm registry should be <a href="https://registry.npmjs.org/">https://registry.npmjs.org</a></p>
+</blockquote>
+<p>View your registry </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+<p>or list all the configs </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+<p>Install modules from a different registry</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<p>Change registry globally </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<h3 id="Working-with-package-json"><a href="#Working-with-package-json" class="headerlink" title="Working with package.json"></a>Working with <code>package.json</code></h3><blockquote>
+<p>Just like you can export&#x2F;install dependencies of your project through <code>requirements.txt</code> when using python, <code>package.json</code> is a more powerful tool for easy package management.</p>
+</blockquote>
+<p>To generate <code>package.json</code> in your project</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init (-y)</span><br></pre></td></tr></table></figure>
+<p>NPM will ask you some questions after <code>npm init</code>,you can skip them by adding the flag <code>-y</code>.<br>By doing <code>npm init</code>, you are essentially creating a package in the folder where you run the command. </p>
+<hr>
+The generated `package.json` looks like this.
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm-test&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;main&quot;</span><span class="punctuation">:</span> <span class="string">&quot;package.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;license&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ISC&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<hr> 
+
+<ul>
+<li><p><code>name</code>: Specifies the name of the package. It should be unique within the npm registry. For example: <code>&quot;name&quot;:&quot;express&quot;</code></p>
+</li>
+<li><p><code>version</code>: Represents the version of the package.  For example: <code>&quot;version&quot;:&quot;1.0.0&quot;</code></p>
+</li>
+<li><p><code>description</code>: Optional, a brief description of your package. </p>
+</li>
+<li><p><code>scripts</code>: Contains a collection of scripts that can be executed using the npm CLI. Common scripts include start, test, and custom scripts for various tasks. For example:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line"><span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jest&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>You can then run these scripts using the npm run command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm run start</span><br><span class="line">npm run test</span><br></pre></td></tr></table></figure></li>
+<li><p><code>author</code>: Represents the name or organization responsible for creating and maintaining the package. For example: </p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TJ Holowaychuk&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tj@vision-media.ca&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>license</code>: Specifies the license under which the package is distributed. It can be an SPDX identifier (e.g., MIT, Apache-2.0) or a path to a license file.</p>
+</li>
+<li><p><code>dependencies</code> : Lists the packages that the current package depends on to function correctly in production. The dependencies are installed when someone installs the package. For example:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;axios&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.4.0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Refer to the <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json">official documentation</a> for more details.</p>
+</li>
+</ul>
+<p>When you run <code>npm install &lt;Module name&gt;</code>, the module will be automatically added to the <code>dependencies</code> of package.json. With the <code>dependencies</code> in <code>package.json</code>, you can reuse and share the dependencies of your projects easily. Put <code>package.json</code> in your new project’s folder, and run </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>npm will install all the dependencies specified in <code>dependencies</code>.</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+        <tag>package management</tag>
       </tags>
   </entry>
   <entry>
@@ -73,12 +160,15 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
 <li>A re-render is only triggered when state is <strong>update</strong>, which means that no re-render happens if the new state is the same as the current state. </li>
 <li>DON’T try to update the state by directly changing its value such as <code>people[0] = null</code> since state is designed to be <strong>read-only</strong></li>
 <li>Follow the rules of using React hooks: <ol>
-<li>Don’t call <code>useState()</code> in loops, condition, nested functions</li>
+<li>Don’t call <code>useState()</code> in loops, condition, nested functions. Doing so might change the order of the hooks being called and cause inconsistent behavior&#x2F;state. </li>
 <li>Only call <code>useState()</code> inside function components or custom hooks.</li>
 </ol>
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
       <tags>
         <tag>React</tag>
         <tag>hooks</tag>

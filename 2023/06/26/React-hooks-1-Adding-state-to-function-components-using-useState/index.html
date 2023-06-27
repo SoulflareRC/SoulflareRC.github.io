@@ -118,7 +118,7 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
 <li>A re-render is only triggered when state is <strong>update</strong>, which means that no re-render happens if the new state is the same as the current state. </li>
 <li>DON’T try to update the state by directly changing its value such as <code>people[0] = null</code> since state is designed to be <strong>read-only</strong></li>
 <li>Follow the rules of using React hooks: <ol>
-<li>Don’t call <code>useState()</code> in loops, condition, nested functions</li>
+<li>Don’t call <code>useState()</code> in loops, condition, nested functions. Doing so might change the order of the hooks being called and cause inconsistent behavior&#x2F;state. </li>
 <li>Only call <code>useState()</code> inside function components or custom hooks.</li>
 </ol>
 </li>
