@@ -119,7 +119,7 @@ The generated `package.json` looks like this.
   <entry>
     <title>[React hooks] 1:Adding state to function components using useState()</title>
     <url>/2023/06/26/React-hooks-1-Adding-state-to-function-components-using-useState/</url>
-    <content><![CDATA[<p><img src="/img/posts/2.jpg" alt="image"></p>
+    <content><![CDATA[<img src="/2023/06/26/React-hooks-1-Adding-state-to-function-components-using-useState/cover.png" class="">
 <blockquote>
 <p>State is a common concept when using class components with react. When coding in class components, we usually set the initial state in <code>constructor()</code> using <code>this.state = &#123;...&#125;</code>. <br><br>Accordingly, whenever <code>this.state</code> is updated using <code>this.setState()</code>, a <strong>re-render</strong> will be triggered, using the value from the new state. </p>
 </blockquote>
@@ -174,5 +174,14 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
         <tag>hooks</tag>
         <tag>Frontend</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Tailwindcss quick references</title>
+    <url>/2023/06/27/Tailwindcss-quick-references/</url>
+    <content><![CDATA[<div className="bg-blue-500 p-4 rounded-lg">
+    <h2 className="text-white text-xl font-bold">Example Component</h2>
+    <p className="text-white mt-2">This is a sample component using Tailwind CSS.</p>
+    <button className="bg-white text-blue-500 px-4 py-2 mt-4 rounded">Click Me</button>
+</div>]]></content>
   </entry>
 </search>
