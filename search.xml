@@ -114,6 +114,7 @@ The generated `package.json` looks like this.
       <tags>
         <tag>npm</tag>
         <tag>package management</tag>
+        <tag>Reference</tag>
       </tags>
   </entry>
   <entry>
@@ -177,11 +178,91 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
   </entry>
   <entry>
     <title>Tailwindcss quick references</title>
-    <url>/2023/06/27/Tailwindcss-quick-references/</url>
-    <content><![CDATA[<div className="bg-blue-500 p-4 rounded-lg">
-    <h2 className="text-white text-xl font-bold">Example Component</h2>
-    <p className="text-white mt-2">This is a sample component using Tailwind CSS.</p>
-    <button className="bg-white text-blue-500 px-4 py-2 mt-4 rounded">Click Me</button>
-</div>]]></content>
+    <url>/2023/06/28/Tailwindcss-quick-references/</url>
+    <content><![CDATA[<blockquote>
+<p>This post serves as a quick reference for <a href="https://tailwindcss.com/docs/installation"><em>tailwindcss</em></a></p>
+</blockquote>
+<h2 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h2><h4 id="Positioning"><a href="#Positioning" class="headerlink" title="Positioning"></a>Positioning</h4><ul>
+<li><code>[None]</code>:all four(left,top,right,bottom)</li>
+<li><code>x</code>: left &amp; right(x axis) </li>
+<li><code>y</code>: top &amp; bottom(y axis)</li>
+<li><code>s</code>: start(or left)</li>
+<li><code>e</code>: end(or right)</li>
+<li><code>t</code>: top</li>
+<li><code>r</code>: right </li>
+<li><code>b</code>: bottom</li>
+<li><code>l</code>: left<blockquote>
+<p>Hereafter abbrieviated as <code>pos</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Sizing"><a href="#Sizing" class="headerlink" title="Sizing"></a>Sizing</h4><ul>
+<li><code>px</code>: 1px </li>
+<li><code>[Number]</code>: 0.25*<code>[Number]</code>rem. For example: p-1&#x3D;padding:0.25rem</li>
+<li><code>[Fraction]</code>: Supports denominator in [2,12]. For example: w-5&#x2F;6&#x3D;width:83.3% </li>
+<li><code>full</code>: 100% </li>
+<li><code>screen</code>: 100vh or 100vw, depending on height or width</li>
+<li><code>min/max</code>: min&#x2F;max-content</li>
+<li><code>fit</code>: fit-content</li>
+<li><code>auto</code>: auto</li>
+</ul>
+<blockquote>
+<p>Hereafter abbrieviated as <code>size</code> </p>
+</blockquote>
+<h4 id="Coloring"><a href="#Coloring" class="headerlink" title="Coloring"></a>Coloring</h4><ul>
+<li><code>transparent</code>: transparent</li>
+<li><code>black</code></li>
+<li><code>white</code><blockquote>
+<p>Hereafter abbrieviated as <code>color</code> </p>
+</blockquote>
+</li>
+<li><code>[value]</code>:used after certain colors,supports value in [50,950] </li>
+<li><code>[opacity]</code>:<ul>
+<li><code>[color]-[value]/[opacity]</code>,here opacity is an int in [0,100]</li>
+<li><code>[color]-[value]/[[opacity]]</code>,here opacity is a double in [0,1]</li>
+</ul>
+</li>
+<li>…<br><a href="https://tailwindcss.com/docs/customizing-colors">Official documentation</a></li>
+</ul>
+<h4 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h4><p>Syntax: <code>[modifier]:[class]</code>, for example:<code>hover:bg-sky-700</code><br>Supported modifiers:</p>
+<ul>
+<li>Pseudo-classes, like :hover, :focus, :first-child, and :required</li>
+<li>Pseudo-elements, like ::before, ::after, ::placeholder, and ::selection</li>
+<li>Media and feature queries, like responsive breakpoints, dark mode, and prefers-reduced-motion</li>
+<li>Attribute selectors, like [dir&#x3D;”rtl”] and [open]<br><a href="https://tailwindcss.com/docs/hover-focus-and-other-states">Official documentation</a></li>
+</ul>
+<h4 id="Columns"><a href="#Columns" class="headerlink" title="Columns"></a>Columns</h4><ul>
+<li><code>[Number]</code>: supports values in [1,12], 12 is equal to 100%</li>
+<li><code>[Size codenames]</code>:Supports values in [3xs,7xl]</li>
+</ul>
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><p>Basis(use inside of flexbox)</p>
+<ul>
+<li><code>basis-[size]</code>: For example, <code>basis-px</code><br>Grow&#x2F;Shrink</li>
+<li><code>grow</code>&#x2F;<code>grow-0</code>: control flex grow or not </li>
+<li><code>shrink</code>&#x2F;<code>shrink-0</code>: similar to <code>grow</code><br>Order</li>
+<li><code>order-[Number]/first/last</code>: control the order of an item in flexbox,<code>[Number]</code> supports values in [0,12]</li>
+</ul>
+<h4 id="Border-Divide-Outline-Ring-Box-Shadow"><a href="#Border-Divide-Outline-Ring-Box-Shadow" class="headerlink" title="Border, Divide Outline, Ring, Box Shadow"></a>Border, Divide Outline, Ring, Box Shadow</h4><p>Width: </p>
+<ul>
+<li><code>[None]</code>:1px</li>
+<li><code>[Number]</code>:[Number]px, supports {0,2,4,8}<br>Rounding Size: </li>
+<li><code>sm</code>:0.125rem</li>
+<li><code>md</code>:0.375rem</li>
+<li><code>lg</code>:0.5rem</li>
+<li><code>xl</code>:0.75rem</li>
+<li><code>2xl</code>:1rem</li>
+<li><code>3xl</code>:1.5rem<br><em>Box shadow uses <code>shadow</code> and only uses rounding sizes of borders</em></li>
+</ul>
+<h4 id="Spacing"><a href="#Spacing" class="headerlink" title="Spacing"></a>Spacing</h4><ul>
+<li>Padding: <code>p[pos]-[size]</code></li>
+<li>Margin: <code>m[post]-[size]</code></li>
+<li>Space between: <code>space-[pos]-[size]</code></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Frontend</tag>
+        <tag>Reference</tag>
+        <tag>tailwindcss</tag>
+      </tags>
   </entry>
 </search>
