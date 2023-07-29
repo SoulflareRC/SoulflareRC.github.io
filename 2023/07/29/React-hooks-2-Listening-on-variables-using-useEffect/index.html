@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>[React hooks] 2:Listening on variables using useEffect() - SoulflareRC&#39;s blog!</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Soulflare,"> 
+    <meta name="description" content="Sharing moments of my life,
+
+How do we do extra things while updating states created with useState()? As said before, setState,"> 
+    <meta name="author" content="SoulflareRC"> 
+    <link rel="alternative" href="atom.xml" title="SoulflareRC&#39;s blog!" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="[React hooks] 2:Listening on variables using useEffect() - SoulflareRC&#39;s blog!"/>
+    <meta name="twitter:description" content="Sharing moments of my life,
+
+How do we do extra things while updating states created with useState()? As said before, setState,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="Sharing moments of my life,
+
+How do we do extra things while updating states created with useState()? As said before, setState,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="SoulflareRC&#39;s blog!"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="[React hooks] 2:Listening on variables using useEffect() - SoulflareRC&#39;s blog!"/>
+    <meta property="og:description" content="Sharing moments of my life,
+
+How do we do extra things while updating states created with useState()? As said before, setState,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    
+<link rel="stylesheet" href="/css/tailwind.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">SoulflareRC&#39;s blog!</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://localhost:4000"></a>
+    <div title="play/pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">[React hooks] 2:Listening on variables using useEffect()</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="QRCode" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">[React hooks] 2:Listening on variables using useEffect()</h1>
+        <div class="stuff">
+            <span>July 29, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Frontend/" rel="tag">Frontend</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/React/" rel="tag">React</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hooks/" rel="tag">hooks</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><img src="/img/posts/3.jpg" alt="image"></p>
+<blockquote>
+<p>How do we do extra things while updating states created with <code>useState()</code>? As said before, <code>setState()</code> is <em>asynchronous</em>, so we can’t get the updated value immediately. <code>useEffect()</code> is another useful hook that gets you that updated value.  <br> </p>
+</blockquote>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>Common usage of <code>useState()</code> looks like this </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useEffect &#125; from &#x27;react&#x27; //Don&#x27;t forget the import statement!!!</span><br><span class="line">...</span><br><span class="line">useEffect( &lt;some function&gt;, [&lt;list of dependencies&gt;] )</span><br></pre></td></tr></table></figure>
+<p>Whenever <strong>any</strong> of the dependencies in the list <strong>changes its value</strong>, the <strong>function</strong> will be triggered. The <strong>function</strong> will also be triggered when the component is rendered for the <strong>first time</strong>.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Here’s an example of getting the updated state correctly.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">const [foo,setFoo] = useState(false);</span><br><span class="line">useEffect(()=&gt;&#123; // using arrow function here</span><br><span class="line">    console.log(foo); </span><br><span class="line">&#125;,[foo]) // foo&#x27;s updated value will be printed whenever its updated</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="Pitfall-1-Infinite-re-render"><a href="#Pitfall-1-Infinite-re-render" class="headerlink" title="Pitfall 1: Infinite re-render"></a>Pitfall 1: Infinite re-render</h3><p>When the dependency list is <strong>not specified</strong>, the function inside <code>useEffect()</code> will be triggered on every re-render. However, it is not uncommon to use <code>setState()</code> inside of <code>useEffect()</code>…and that triggers another re-render, which then triggers <code>useEffect()</code>, which then triggers another re-render…and it becomes an infinite loop! The correct way to do this is to pass the dependency list and avoid including the state you are changing inside of the function. Or…you can just pass in an empty array <code>[]</code> to only trigger the function on first render. </p>
+<h3 id="Pitfall-2-Ignored-cleanup"><a href="#Pitfall-2-Ignored-cleanup" class="headerlink" title="Pitfall 2: Ignored cleanup"></a>Pitfall 2: Ignored cleanup</h3><p>Sometimes we want to bind event listeners inside <code>useEffect()</code>. However, the catch is that event listeners aren’t <strong>unique</strong> themselves, which means that we can run into the issue of attaching a listener to something everytime the dependency is updated, causing the event to be responded for multiple times. Here we need the <strong>cleanup</strong> code. <br><br>The body of the function we passed into <code>useEffect()</code> is called <strong>setup</strong> code, which is executed on dependency updates, and if the function returns another function(optional), the returned function serves as the <strong>cleanup</strong> code that cleans up the <strong>setup</strong> code. <br><br>Here’s an example: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const button = document.querySelector(&quot;#btn&quot;);</span><br><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">    const handleClick = () =&gt; &#123;</span><br><span class="line">        console.log(&quot;Clicked&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    button.addEventListener(&#x27;click&#x27;,handleClick);</span><br><span class="line">    return () =&gt; button.removeEventListener(&#x27;click&#x27;,handleClick); //cleans up</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pitfall-3-Async-useEffect"><a href="#Pitfall-3-Async-useEffect" class="headerlink" title="Pitfall 3: Async useEffect?"></a>Pitfall 3: Async useEffect?</h3><p>Sometimes you might want an asynchronous setup code like this: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(async ()=&gt;&#123;</span><br><span class="line">    await ... (some async function)</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+<p>However, <code>useEffect()</code> does not allow asynchronous functions as its setup code, but you can call async functions inside of it: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">    const someAsyncFunc = async () =&gt; &#123;</span><br><span class="line">        await ... (some async function)</span><br><span class="line">    &#125;;</span><br><span class="line">    someAsyncFunc(); // ok</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pitfall-4-Missing-reactive-dependencies"><a href="#Pitfall-4-Missing-reactive-dependencies" class="headerlink" title="Pitfall 4: Missing reactive dependencies"></a>Pitfall 4: Missing reactive dependencies</h3><p>“Reactive values”(props, state, variables declared inside component’s body) must be included inside of <code>useEffect()</code>‘s dependency list if they are used in the setup code. </p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/422977895.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        <!-- 
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >Comments</div>
+
+ -->
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

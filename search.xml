@@ -35,7 +35,7 @@
   <entry>
     <title>NPM basic usage</title>
     <url>/2023/06/27/NPM-basic-usage/</url>
-    <content><![CDATA[<img src="/2023/06/27/NPM-basic-usage/cover.jpg" class="">
+    <content><![CDATA[
 <blockquote>
 <p> NPM in a <em><strong>package management</strong></em> tool that&#39;s (usually) installed with Node.js. If you know python, npm is just like pip to python. It allows developers to easily install, manage, and share reusable code packages (also known as modules or packages) with their projects. npm provides access to a vast collection of open-source libraries and tools, enabling developers to leverage existing solutions and accelerate development.</p>
 </blockquote>
@@ -120,7 +120,7 @@ The generated `package.json` looks like this.
   <entry>
     <title>[React hooks] 1:Adding state to function components using useState()</title>
     <url>/2023/06/26/React-hooks-1-Adding-state-to-function-components-using-useState/</url>
-    <content><![CDATA[<img src="/2023/06/26/React-hooks-1-Adding-state-to-function-components-using-useState/cover.png" class="">
+    <content><![CDATA[
 <blockquote>
 <p>State is a common concept when using class components with react. When coding in class components, we usually set the initial state in <code>constructor()</code> using <code>this.state = &#123;...&#125;</code>. <br><br>Accordingly, whenever <code>this.state</code> is updated using <code>this.setState()</code>, a <strong>re-render</strong> will be triggered, using the value from the new state. </p>
 </blockquote>
@@ -166,6 +166,38 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
 </ol>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>hooks</tag>
+        <tag>Frontend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[React hooks] 2:Listening on variables using useEffect()</title>
+    <url>/2023/07/29/React-hooks-2-Listening-on-variables-using-useEffect/</url>
+    <content><![CDATA[<p><img src="/img/posts/3.jpg" alt="image"></p>
+<blockquote>
+<p>How do we do extra things while updating states created with <code>useState()</code>? As said before, <code>setState()</code> is <em>asynchronous</em>, so we can’t get the updated value immediately. <code>useEffect()</code> is another useful hook that gets you that updated value.  <br> </p>
+</blockquote>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>Common usage of <code>useState()</code> looks like this </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import React, &#123; useEffect &#125; from &#x27;react&#x27; //Don&#x27;t forget the import statement!!!</span><br><span class="line">...</span><br><span class="line">useEffect( &lt;some function&gt;, [&lt;list of dependencies&gt;] )</span><br></pre></td></tr></table></figure>
+<p>Whenever <strong>any</strong> of the dependencies in the list <strong>changes its value</strong>, the <strong>function</strong> will be triggered. The <strong>function</strong> will also be triggered when the component is rendered for the <strong>first time</strong>.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Here’s an example of getting the updated state correctly.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">const [foo,setFoo] = useState(false);</span><br><span class="line">useEffect(()=&gt;&#123; // using arrow function here</span><br><span class="line">    console.log(foo); </span><br><span class="line">&#125;,[foo]) // foo&#x27;s updated value will be printed whenever its updated</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="Pitfall-1-Infinite-re-render"><a href="#Pitfall-1-Infinite-re-render" class="headerlink" title="Pitfall 1: Infinite re-render"></a>Pitfall 1: Infinite re-render</h3><p>When the dependency list is <strong>not specified</strong>, the function inside <code>useEffect()</code> will be triggered on every re-render. However, it is not uncommon to use <code>setState()</code> inside of <code>useEffect()</code>…and that triggers another re-render, which then triggers <code>useEffect()</code>, which then triggers another re-render…and it becomes an infinite loop! The correct way to do this is to pass the dependency list and avoid including the state you are changing inside of the function. Or…you can just pass in an empty array <code>[]</code> to only trigger the function on first render. </p>
+<h3 id="Pitfall-2-Ignored-cleanup"><a href="#Pitfall-2-Ignored-cleanup" class="headerlink" title="Pitfall 2: Ignored cleanup"></a>Pitfall 2: Ignored cleanup</h3><p>Sometimes we want to bind event listeners inside <code>useEffect()</code>. However, the catch is that event listeners aren’t <strong>unique</strong> themselves, which means that we can run into the issue of attaching a listener to something everytime the dependency is updated, causing the event to be responded for multiple times. Here we need the <strong>cleanup</strong> code. <br><br>The body of the function we passed into <code>useEffect()</code> is called <strong>setup</strong> code, which is executed on dependency updates, and if the function returns another function(optional), the returned function serves as the <strong>cleanup</strong> code that cleans up the <strong>setup</strong> code. <br><br>Here’s an example: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const button = document.querySelector(&quot;#btn&quot;);</span><br><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">    const handleClick = () =&gt; &#123;</span><br><span class="line">        console.log(&quot;Clicked&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    button.addEventListener(&#x27;click&#x27;,handleClick);</span><br><span class="line">    return () =&gt; button.removeEventListener(&#x27;click&#x27;,handleClick); //cleans up</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pitfall-3-Async-useEffect"><a href="#Pitfall-3-Async-useEffect" class="headerlink" title="Pitfall 3: Async useEffect?"></a>Pitfall 3: Async useEffect?</h3><p>Sometimes you might want an asynchronous setup code like this: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">useEffect(async ()=&gt;&#123;</span><br><span class="line">    await ... (some async function)</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+<p>However, <code>useEffect()</code> does not allow asynchronous functions as its setup code, but you can call async functions inside of it: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">    const someAsyncFunc = async () =&gt; &#123;</span><br><span class="line">        await ... (some async function)</span><br><span class="line">    &#125;;</span><br><span class="line">    someAsyncFunc(); // ok</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pitfall-4-Missing-reactive-dependencies"><a href="#Pitfall-4-Missing-reactive-dependencies" class="headerlink" title="Pitfall 4: Missing reactive dependencies"></a>Pitfall 4: Missing reactive dependencies</h3><p>“Reactive values”(props, state, variables declared inside component’s body) must be included inside of <code>useEffect()</code>‘s dependency list if they are used in the setup code. </p>
 ]]></content>
       <categories>
         <category>tech</category>
