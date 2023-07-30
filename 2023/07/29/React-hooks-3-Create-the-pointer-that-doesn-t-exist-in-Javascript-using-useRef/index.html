@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>[React hooks] 3:Create the pointer that doesn&#39;t exist in Javascript using useRef() - SoulflareRC&#39;s blog!</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Soulflare,"> 
+    <meta name="description" content="Sharing moments of my life,
+
+useState() has enabled us to read&amp;#x2F;write the “same” state variable across different component,"> 
+    <meta name="author" content="SoulflareRC"> 
+    <link rel="alternative" href="atom.xml" title="SoulflareRC&#39;s blog!" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="[React hooks] 3:Create the pointer that doesn&#39;t exist in Javascript using useRef() - SoulflareRC&#39;s blog!"/>
+    <meta name="twitter:description" content="Sharing moments of my life,
+
+useState() has enabled us to read&amp;#x2F;write the “same” state variable across different component,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="Sharing moments of my life,
+
+useState() has enabled us to read&amp;#x2F;write the “same” state variable across different component,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="SoulflareRC&#39;s blog!"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="[React hooks] 3:Create the pointer that doesn&#39;t exist in Javascript using useRef() - SoulflareRC&#39;s blog!"/>
+    <meta property="og:description" content="Sharing moments of my life,
+
+useState() has enabled us to read&amp;#x2F;write the “same” state variable across different component,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    
+<link rel="stylesheet" href="/css/tailwind.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">SoulflareRC&#39;s blog!</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://localhost:4000"></a>
+    <div title="play/pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">[React hooks] 3:Create the pointer that doesn't exist in Javascript using useRef()</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="QRCode" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">[React hooks] 3:Create the pointer that doesn't exist in Javascript using useRef()</h1>
+        <div class="stuff">
+            <span>July 29, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Frontend/" rel="tag">Frontend</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/React/" rel="tag">React</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hooks/" rel="tag">hooks</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><img src="/img/posts/4.jpg" alt="image"></p>
+<blockquote>
+<p><code>useState()</code> has enabled us to read&#x2F;write the “same” state variable across different components, but every modification comes with a re-render. However, there are such times when we don’t want that re-render. <code>useRef()</code> is what you want. </p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://react.dev/reference/react/useRef">Official docs</a></p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>There’s no such thing as “pointer” in Javascript, but <code>useRef()</code> gives you a “pointer” just like what you’d use in C++!</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;useRef&#125; from &#x27;react&#x27;; </span><br><span class="line">...</span><br><span class="line">const intRef = useRef(0) </span><br><span class="line">const inputRef = useRef(null) // a &quot;nullptr&quot;</span><br><span class="line">...</span><br><span class="line">return &lt;input ref=&#123;inputRef&#125;/&gt; // points inputRef to this DOM element</span><br></pre></td></tr></table></figure>
+<p><code>useRef()</code> on takes in one argument, which is its initial value. You are allowed to access&#x2F;modify the initial value through <code>ref.current</code>, while not triggering a re-render. Also, the value persists across re-renders, while normal variables get reset on re-renders.  </p>
+<h4 id="A-not-so-exciting-example"><a href="#A-not-so-exciting-example" class="headerlink" title="A not so exciting example"></a>A not so exciting example</h4><p>This example shows how to modify the value of a ref by <code>ref.current</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const intRef = useRef(0);</span><br><span class="line">const handleClick = () =&gt; &#123;</span><br><span class="line">  intRef.current+=1; // increment the value of intRef by 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="A-more-exciting-example"><a href="#A-more-exciting-example" class="headerlink" title="A more exciting example"></a>A more exciting example</h4><p>More times, we use <code>useRef()</code> to modify DOM elements conveniently. This saves us time from doing <code>querySelector</code> and provides a more “React” way of doing this. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const inputRef = useRef(null);</span><br><span class="line">const handleInput = () =&gt; &#123;</span><br><span class="line">  console.log(inputRef.current.value);</span><br><span class="line">  if(inputRef.current.value.length&gt;100)&#123;</span><br><span class="line">    inputRef.current.value = &quot;&quot;; </span><br><span class="line">    // clears input if its value&#x27;s length exceeds 100</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">return &lt;input type=&quot;text&quot; ref=&#123;inputRef&#125;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Pitfall-1-Read-x2F-Write-ref-current-during-rendering"><a href="#Pitfall-1-Read-x2F-Write-ref-current-during-rendering" class="headerlink" title="Pitfall 1: Read&#x2F;Write ref.current during rendering"></a>Pitfall 1: Read&#x2F;Write <code>ref.current</code> during rendering</h3><p>We’d like to keep the result of rendering consistent if props, state, context don’t change, but ref persists its data across re-renders. Therefore, reading&#x2F;writing <code>ref.current</code> duing rendering(the body of function components) is not recommended. </p>
+<h3 id="Pitfall-2-“Memory-leak”"><a href="#Pitfall-2-“Memory-leak”" class="headerlink" title="Pitfall 2: “Memory leak”"></a>Pitfall 2: “Memory leak”</h3><p>I’d like to think about <code>ref</code> as a C++ pointer. When you declare a ref like this </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const video = useRef(new VideoPlayer()); </span><br></pre></td></tr></table></figure>
+<p>You “allocated memory” for that <code>new</code> VideoPlayer(), just like what happens when you use <code>new</code> in C++. Therefore, just like C++, if you assign the value to another <code>new</code> like this…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video.current = new VideoPlayer();</span><br></pre></td></tr></table></figure>
+<p>In C++, you lost the address of the old object, which will cause a memory leak. Although this will not actually cause a memory leak, this creates expensive objects and we only want to manipulate a single object. </p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/422977895.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        <!-- 
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >Comments</div>
+
+ -->
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

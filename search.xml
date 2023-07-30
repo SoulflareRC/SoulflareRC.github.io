@@ -297,4 +297,35 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
         <tag>tailwindcss</tag>
       </tags>
   </entry>
+  <entry>
+    <title>[React hooks] 3:Create the pointer that doesn&#39;t exist in Javascript using useRef()</title>
+    <url>/2023/07/29/React-hooks-3-Create-the-pointer-that-doesn-t-exist-in-Javascript-using-useRef/</url>
+    <content><![CDATA[<p><img src="/img/posts/4.jpg" alt="image"></p>
+<blockquote>
+<p><code>useState()</code> has enabled us to read&#x2F;write the “same” state variable across different components, but every modification comes with a re-render. However, there are such times when we don’t want that re-render. <code>useRef()</code> is what you want. </p>
+</blockquote>
+<p><a href="https://react.dev/reference/react/useRef">Official docs</a></p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>There’s no such thing as “pointer” in Javascript, but <code>useRef()</code> gives you a “pointer” just like what you’d use in C++!</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import React, &#123;useRef&#125; from &#x27;react&#x27;; </span><br><span class="line">...</span><br><span class="line">const intRef = useRef(0) </span><br><span class="line">const inputRef = useRef(null) // a &quot;nullptr&quot;</span><br><span class="line">...</span><br><span class="line">return &lt;input ref=&#123;inputRef&#125;/&gt; // points inputRef to this DOM element</span><br></pre></td></tr></table></figure>
+<p><code>useRef()</code> on takes in one argument, which is its initial value. You are allowed to access&#x2F;modify the initial value through <code>ref.current</code>, while not triggering a re-render. Also, the value persists across re-renders, while normal variables get reset on re-renders.  </p>
+<h4 id="A-not-so-exciting-example"><a href="#A-not-so-exciting-example" class="headerlink" title="A not so exciting example"></a>A not so exciting example</h4><p>This example shows how to modify the value of a ref by <code>ref.current</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const intRef = useRef(0);</span><br><span class="line">const handleClick = () =&gt; &#123;</span><br><span class="line">  intRef.current+=1; // increment the value of intRef by 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="A-more-exciting-example"><a href="#A-more-exciting-example" class="headerlink" title="A more exciting example"></a>A more exciting example</h4><p>More times, we use <code>useRef()</code> to modify DOM elements conveniently. This saves us time from doing <code>querySelector</code> and provides a more “React” way of doing this. </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const inputRef = useRef(null);</span><br><span class="line">const handleInput = () =&gt; &#123;</span><br><span class="line">  console.log(inputRef.current.value);</span><br><span class="line">  if(inputRef.current.value.length&gt;100)&#123;</span><br><span class="line">    inputRef.current.value = &quot;&quot;; </span><br><span class="line">    // clears input if its value&#x27;s length exceeds 100</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">return &lt;input type=&quot;text&quot; ref=&#123;inputRef&#125;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Pitfall-1-Read-x2F-Write-ref-current-during-rendering"><a href="#Pitfall-1-Read-x2F-Write-ref-current-during-rendering" class="headerlink" title="Pitfall 1: Read&#x2F;Write ref.current during rendering"></a>Pitfall 1: Read&#x2F;Write <code>ref.current</code> during rendering</h3><p>We’d like to keep the result of rendering consistent if props, state, context don’t change, but ref persists its data across re-renders. Therefore, reading&#x2F;writing <code>ref.current</code> duing rendering(the body of function components) is not recommended. </p>
+<h3 id="Pitfall-2-“Memory-leak”"><a href="#Pitfall-2-“Memory-leak”" class="headerlink" title="Pitfall 2: “Memory leak”"></a>Pitfall 2: “Memory leak”</h3><p>I’d like to think about <code>ref</code> as a C++ pointer. When you declare a ref like this </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const video = useRef(new VideoPlayer()); </span><br></pre></td></tr></table></figure>
+<p>You “allocated memory” for that <code>new</code> VideoPlayer(), just like what happens when you use <code>new</code> in C++. Therefore, just like C++, if you assign the value to another <code>new</code> like this…</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">video.current = new VideoPlayer();</span><br></pre></td></tr></table></figure>
+<p>In C++, you lost the address of the old object, which will cause a memory leak. Although this will not actually cause a memory leak, this creates expensive objects and we only want to manipulate a single object. </p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>hooks</tag>
+        <tag>Frontend</tag>
+      </tags>
+  </entry>
 </search>
