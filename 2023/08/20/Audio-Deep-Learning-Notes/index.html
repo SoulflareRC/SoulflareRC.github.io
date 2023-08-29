@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Audio Deep Learning Notes - SoulflareRC&#39;s blog!</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Soulflare,"> 
+    <meta name="description" content="Sharing moments of my life,
+This post serves as a quick note for Audio MLSource
+
+SoundAudios are signals that can be represent,"> 
+    <meta name="author" content="SoulflareRC"> 
+    <link rel="alternative" href="atom.xml" title="SoulflareRC&#39;s blog!" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Audio Deep Learning Notes - SoulflareRC&#39;s blog!"/>
+    <meta name="twitter:description" content="Sharing moments of my life,
+This post serves as a quick note for Audio MLSource
+
+SoundAudios are signals that can be represent,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="Sharing moments of my life,
+This post serves as a quick note for Audio MLSource
+
+SoundAudios are signals that can be represent,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="SoulflareRC&#39;s blog!"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Audio Deep Learning Notes - SoulflareRC&#39;s blog!"/>
+    <meta property="og:description" content="Sharing moments of my life,
+This post serves as a quick note for Audio MLSource
+
+SoundAudios are signals that can be represent,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    
+<link rel="stylesheet" href="/css/tailwind.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">SoulflareRC&#39;s blog!</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://localhost:4000"></a>
+    <div title="play/pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Audio Deep Learning Notes</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="QRCode" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Audio Deep Learning Notes</h1>
+        <div class="stuff">
+            <span>August 20, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Audio-Signal-Processing/" rel="tag">Audio Signal Processing</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>This post serves as a quick note for Audio ML<br><a target="_blank" rel="noopener" href="https://towardsdatascience.com/audio-deep-learning-made-simple-part-1-state-of-the-art-techniques-da1d3dff2504">Source</a></p>
+</blockquote>
+<h3 id="Sound"><a href="#Sound" class="headerlink" title="Sound"></a>Sound</h3><p>Audios are signals that can be represented as waves. </p>
+<h4 id="3-basic"><a href="#3-basic" class="headerlink" title="3 basic"></a>3 basic</h4><ul>
+<li>Amplitude</li>
+<li>Frequency </li>
+<li>Shape</li>
+</ul>
+<h4 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h4><p>We can’t represent the continuous waves of the signals, but we can take a series of points with the same interval and measure their value. Each point is a <code>sample</code>, and <code>sample rate</code> is the number of samples per second. </p>
+<p>A common approach to represent audio data is to convert audio into images and process the images. </p>
+<h4 id="Spectrum"><a href="#Spectrum" class="headerlink" title="Spectrum"></a>Spectrum</h4><p>Signals of diff freq can be added together to represent any sound in the real world, and thus any signal can be expressed as a sum of many distinct freq.<br>Spectrum plots all the freq in a signal with amplitude and freq. It is graph of amplitude vs frequency.<br><code>Fundamental Frequency</code>: Lowest freq in a signal.<br><code>Harmonics</code>: Freqs that are multiples of the fundamental frequency. </p>
+<h4 id="Spectrograms"><a href="#Spectrograms" class="headerlink" title="Spectrograms"></a>Spectrograms</h4><p>A signal’s spectrum varies over time, and thus a graph that plots spectrum over time is called <code>spectogram</code>. Spectrogram plots frequency vs time. We take spectrum again and again in different times and join them as a single plot. Amplitude is represented as different colors for each freq, the brighter the higher energy.<br>Spectrograms are produced using Fourier Transforms. </p>
+<h4 id="Audio-Deep-Learning"><a href="#Audio-Deep-Learning" class="headerlink" title="Audio Deep Learning"></a>Audio Deep Learning</h4><ul>
+<li>Start with raw .wav audio file</li>
+<li>Convert audio into spectrogram</li>
+<li>Process spectrogram(image) with standard CNN architectures<br>Tasks:</li>
+<li>Audio Classification: E.g.: What is the type&#x2F;source of the sound? </li>
+<li>Audio Separation &amp; Segmentation: E.g.: Separating audios from different speakers</li>
+<li>Music Genre Classification: Multi-label classification problem. E.g.: Categorize genre, mood, style used for a song. </li>
+<li>Music Generation: E.g.: Generate music from an image</li>
+<li>Music Transcription: E.g.: AI-generated sheet music</li>
+<li>Voice recognition: Another classification problem. E.g.: Recognizing speaker of a speech</li>
+<li>Speech to Text: Extract words from the audio. One of the most challenging applications. </li>
+<li>Text to Speech: Generate audio from the words.</li>
+</ul>
+<h4 id="The-Scales"><a href="#The-Scales" class="headerlink" title="The Scales"></a>The Scales</h4><p>A scale of pitches. Since humans don’t perceive frequencies linearly and we are more sensitive to low frequencies, the Mel Scale was developed to adapt to human’s log-scale perceptions. Similarly, we also perceive loudness(amplitude) logrithmatically, and we use the Decibel Scale for loudness. </p>
+<h4 id="Spectrogram-Optimization"><a href="#Spectrogram-Optimization" class="headerlink" title="Spectrogram Optimization"></a>Spectrogram Optimization</h4><ul>
+<li>Fast Fourier Transform(FFT): FFT is an efficient algorithm to compute the expensive Discrete Fourier Transform(DFT). FFT doesn’t give you how frequencies changed over time though. </li>
+<li>Short-time Fourier Transform(STFT): Breaks audio signal into smaller sections using a sliding time window, do FFT on each section and combines them. This captures frequency variations over time.</li>
+</ul>
+<p>Frequencies are split into multiple bands for better representation. </p>
+<p>Mel Spectrogram Hyperparameters:</p>
+<ul>
+<li>fmin: minimum freq</li>
+<li>fmax: maxmimum freq</li>
+<li>n_mels: number of frequency bands</li>
+</ul>
+<h4 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h4><p>Normal image augmentations such as flip and rotation won’t work with spectrograms since they change the sound it represents. Special augmentations are applied to spectrograms. </p>
+<ul>
+<li>Freq mask: Randomly mask out a range of consecutive freqs by adding horizontal bars. </li>
+<li>Time mask: Similar to freq mask, but use vertical bars.</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/422977895.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        <!-- 
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >Comments</div>
+
+ -->
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

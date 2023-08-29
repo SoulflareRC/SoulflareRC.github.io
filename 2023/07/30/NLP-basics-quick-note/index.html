@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NLP basics quick note - SoulflareRC&#39;s blog!</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Soulflare,"> 
+    <meta name="description" content="Sharing moments of my life,
+This post serves as a quick note for NLP basics 
+
+ConceptsTokenThe basic unit of a sequence of tex,"> 
+    <meta name="author" content="SoulflareRC"> 
+    <link rel="alternative" href="atom.xml" title="SoulflareRC&#39;s blog!" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="NLP basics quick note - SoulflareRC&#39;s blog!"/>
+    <meta name="twitter:description" content="Sharing moments of my life,
+This post serves as a quick note for NLP basics 
+
+ConceptsTokenThe basic unit of a sequence of tex,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="Sharing moments of my life,
+This post serves as a quick note for NLP basics 
+
+ConceptsTokenThe basic unit of a sequence of tex,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="SoulflareRC&#39;s blog!"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="NLP basics quick note - SoulflareRC&#39;s blog!"/>
+    <meta property="og:description" content="Sharing moments of my life,
+This post serves as a quick note for NLP basics 
+
+ConceptsTokenThe basic unit of a sequence of tex,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    
+<link rel="stylesheet" href="/css/tailwind.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">SoulflareRC&#39;s blog!</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://localhost:4000"></a>
+    <div title="play/pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">NLP basics quick note</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="QRCode" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">NLP basics quick note</h1>
+        <div class="stuff">
+            <span>July 30, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>This post serves as a quick note for NLP basics </p>
+</blockquote>
+<h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3><h4 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h4><p>The basic unit of a sequence of text. Can be a word, sentence, a character, etc.<br>Special tokens: </p>
+<ul>
+<li>sos: Start of sequence. Usually a special token to mark the start of sequence. </li>
+<li>eos: Similar to sos, a special token to mark the end of sequence. </li>
+<li>pad: We use the pad token to pad sequences of different lengths and make them of uniform lengths. This token will usually be ignored by the model since it doesn’t carry any useful information.</li>
+</ul>
+<h4 id="Corpus"><a href="#Corpus" class="headerlink" title="Corpus"></a>Corpus</h4><p>Text dataset, often has labels such as word type. </p>
+<h4 id="Vocab"><a href="#Vocab" class="headerlink" title="Vocab"></a>Vocab</h4><p>The list of all possible tokens that can appear in the text. Every token has an idx number, and it’s mapped both ways.<br>3 tables:</p>
+<ul>
+<li>itos: index -&gt; token</li>
+<li>stoi: token -&gt; index</li>
+<li>freq: frequency of the tokens</li>
+</ul>
+<h4 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h4><p>Turning text into “tokens”, for example:<br><code>This is an example</code><br>to<br><code>This</code>, <code>is</code>, <code>an</code>, <code>example</code><br>And there are different ways of tokenization, the previous example was using <code>word tokenization</code>, here’s an example of <code>sentence tokenization</code>:<br><code>Hello! Welcome to my blog! Here&#39;s a quick note of NLP basics!</code><br>to<br><code>Hello!</code>, <code>Welcome to my blog!</code>, <code>Here&#39;s a quick note of NLP basics!</code> </p>
+<h4 id="Stemming"><a href="#Stemming" class="headerlink" title="Stemming"></a>Stemming</h4><p>Finding the root of words. Such as <code>useful</code> to <code>use</code>, <code>rational</code> to <code>ration</code>, etc.<br>This is based on rules and there can be <em>overstemming</em> and <em>understemming</em>. </p>
+<h4 id="Lemmatization"><a href="#Lemmatization" class="headerlink" title="Lemmatization"></a>Lemmatization</h4><p>Finding the form of the related word in the dictionary. Such as <code>bats</code> to <code>bat</code>, <code>workers</code> to <code>worker</code>, <code>was</code> to <code>be</code>, etc. Both stemming and lemmatization reduces inflectional forms to a common base form.</p>
+<h4 id="Part-of-Speech-Tagging-POS-Tag"><a href="#Part-of-Speech-Tagging-POS-Tag" class="headerlink" title="Part of Speech Tagging(POS-Tag)"></a>Part of Speech Tagging(POS-Tag)</h4><p>Labeling words in a text according to their word types such as none, adjective, adverb, verb, etc.<br>POS-tagging is a supervised learning solution that uses features like previous word, next word, first letter, etc.<br><a target="_blank" rel="noopener" href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">Tags ref sheet</a></p>
+<h4 id="Chunking-Shallow-parsing"><a href="#Chunking-Shallow-parsing" class="headerlink" title="Chunking(Shallow parsing)"></a>Chunking(Shallow parsing)</h4><p>Deducing the higher level units(phrases) made of atomic units like noun, verbs, adj, etc. For example:<br><code>Mary</code>(NP) <code>slapped</code>(VP) <code>the green witch</code>(NP)</p>
+<h4 id="Parsing"><a href="#Parsing" class="headerlink" title="Parsing"></a>Parsing</h4><p>Recognizing the structure of a sentence. Shows how the grammatical units relate to each other. Another way of showing relationship is <em>dependency parsing</em>. </p>
+<h4 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h4><p>The process of converting text to numbers. Mainly has 2 steps: tokenization and convert_tokens_to_ids(convert tokens to numbers). </p>
+<h4 id="Decoding"><a href="#Decoding" class="headerlink" title="Decoding"></a>Decoding</h4><p>Convert the output ids to text. </p>
+<h4 id="Work-Embedding"><a href="#Work-Embedding" class="headerlink" title="Work Embedding"></a>Work Embedding</h4><p>A way to map words to vector space. Turns semantic info of words to vectors and is able to calculate similarity between words. </p>
+<h4 id="N-tuple"><a href="#N-tuple" class="headerlink" title="N-tuple"></a>N-tuple</h4><p>Generating consecutive n-tuples from tokenized text, for example:<br><code>This is an example</code><br>to<br><code>(this, is, an)</code>,<code>(is, an, example)</code><br>Sometimes n-tuples of characters is also used when subword has some useful information. Like <code>-ol</code> from <code>methanol</code>.</p>
+<h3 id="Libraries"><a href="#Libraries" class="headerlink" title="Libraries"></a>Libraries</h3><p>Here’s a list of common python NLP libraries</p>
+<ul>
+<li>nltk</li>
+<li>textblob</li>
+<li>spacy</li>
+</ul>
+<h3 id="A-general-NLP-workflow"><a href="#A-general-NLP-workflow" class="headerlink" title="A general NLP workflow"></a>A general NLP workflow</h3><ol>
+<li>Check device (CPU or GPU)</li>
+<li>Prepare data: Use existing dataset or gather data yourself</li>
+<li>Tokenize data(if needed): Convert text(sentence or paragraph or whatever) into a list of tokens using a tokenizer</li>
+<li>Build vocab(if needed): Build the vocab from the tokens obtained from the training data. Don’t forget to add any special tokens(pad,bos,eos,etc.)</li>
+<li>Convert tokens to ids: Use the vocab built before to convert tokens into numbers. </li>
+<li>Batch and pad sequences(if needed): Pad the sequences in the same batch since tensors of different lengths can’t be processed. (No need if no batching). Add bos and eos tokens if needed. Convert data into tensors. </li>
+<li>Load data, define model, criterion, optimizer, etc. and start training.</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/422977895.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        <!-- 
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >Comments</div>
+
+ -->
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

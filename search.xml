@@ -328,4 +328,191 @@ When <code>setPeople([])</code> is called, the value of <code>people</code> is u
         <tag>Frontend</tag>
       </tags>
   </entry>
+  <entry>
+    <title>NLP basics quick note</title>
+    <url>/2023/07/30/NLP-basics-quick-note/</url>
+    <content><![CDATA[<blockquote>
+<p>This post serves as a quick note for NLP basics </p>
+</blockquote>
+<h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3><h4 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h4><p>The basic unit of a sequence of text. Can be a word, sentence, a character, etc.<br>Special tokens: </p>
+<ul>
+<li>sos: Start of sequence. Usually a special token to mark the start of sequence. </li>
+<li>eos: Similar to sos, a special token to mark the end of sequence. </li>
+<li>pad: We use the pad token to pad sequences of different lengths and make them of uniform lengths. This token will usually be ignored by the model since it doesn’t carry any useful information.</li>
+</ul>
+<h4 id="Corpus"><a href="#Corpus" class="headerlink" title="Corpus"></a>Corpus</h4><p>Text dataset, often has labels such as word type. </p>
+<h4 id="Vocab"><a href="#Vocab" class="headerlink" title="Vocab"></a>Vocab</h4><p>The list of all possible tokens that can appear in the text. Every token has an idx number, and it’s mapped both ways.<br>3 tables:</p>
+<ul>
+<li>itos: index -&gt; token</li>
+<li>stoi: token -&gt; index</li>
+<li>freq: frequency of the tokens</li>
+</ul>
+<h4 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h4><p>Turning text into “tokens”, for example:<br><code>This is an example</code><br>to<br><code>This</code>, <code>is</code>, <code>an</code>, <code>example</code><br>And there are different ways of tokenization, the previous example was using <code>word tokenization</code>, here’s an example of <code>sentence tokenization</code>:<br><code>Hello! Welcome to my blog! Here&#39;s a quick note of NLP basics!</code><br>to<br><code>Hello!</code>, <code>Welcome to my blog!</code>, <code>Here&#39;s a quick note of NLP basics!</code> </p>
+<h4 id="Stemming"><a href="#Stemming" class="headerlink" title="Stemming"></a>Stemming</h4><p>Finding the root of words. Such as <code>useful</code> to <code>use</code>, <code>rational</code> to <code>ration</code>, etc.<br>This is based on rules and there can be <em>overstemming</em> and <em>understemming</em>. </p>
+<h4 id="Lemmatization"><a href="#Lemmatization" class="headerlink" title="Lemmatization"></a>Lemmatization</h4><p>Finding the form of the related word in the dictionary. Such as <code>bats</code> to <code>bat</code>, <code>workers</code> to <code>worker</code>, <code>was</code> to <code>be</code>, etc. Both stemming and lemmatization reduces inflectional forms to a common base form.</p>
+<h4 id="Part-of-Speech-Tagging-POS-Tag"><a href="#Part-of-Speech-Tagging-POS-Tag" class="headerlink" title="Part of Speech Tagging(POS-Tag)"></a>Part of Speech Tagging(POS-Tag)</h4><p>Labeling words in a text according to their word types such as none, adjective, adverb, verb, etc.<br>POS-tagging is a supervised learning solution that uses features like previous word, next word, first letter, etc.<br><a href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">Tags ref sheet</a></p>
+<h4 id="Chunking-Shallow-parsing"><a href="#Chunking-Shallow-parsing" class="headerlink" title="Chunking(Shallow parsing)"></a>Chunking(Shallow parsing)</h4><p>Deducing the higher level units(phrases) made of atomic units like noun, verbs, adj, etc. For example:<br><code>Mary</code>(NP) <code>slapped</code>(VP) <code>the green witch</code>(NP)</p>
+<h4 id="Parsing"><a href="#Parsing" class="headerlink" title="Parsing"></a>Parsing</h4><p>Recognizing the structure of a sentence. Shows how the grammatical units relate to each other. Another way of showing relationship is <em>dependency parsing</em>. </p>
+<h4 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h4><p>The process of converting text to numbers. Mainly has 2 steps: tokenization and convert_tokens_to_ids(convert tokens to numbers). </p>
+<h4 id="Decoding"><a href="#Decoding" class="headerlink" title="Decoding"></a>Decoding</h4><p>Convert the output ids to text. </p>
+<h4 id="Work-Embedding"><a href="#Work-Embedding" class="headerlink" title="Work Embedding"></a>Work Embedding</h4><p>A way to map words to vector space. Turns semantic info of words to vectors and is able to calculate similarity between words. </p>
+<h4 id="N-tuple"><a href="#N-tuple" class="headerlink" title="N-tuple"></a>N-tuple</h4><p>Generating consecutive n-tuples from tokenized text, for example:<br><code>This is an example</code><br>to<br><code>(this, is, an)</code>,<code>(is, an, example)</code><br>Sometimes n-tuples of characters is also used when subword has some useful information. Like <code>-ol</code> from <code>methanol</code>.</p>
+<h3 id="Libraries"><a href="#Libraries" class="headerlink" title="Libraries"></a>Libraries</h3><p>Here’s a list of common python NLP libraries</p>
+<ul>
+<li>nltk</li>
+<li>textblob</li>
+<li>spacy</li>
+</ul>
+<h3 id="A-general-NLP-workflow"><a href="#A-general-NLP-workflow" class="headerlink" title="A general NLP workflow"></a>A general NLP workflow</h3><ol>
+<li>Check device (CPU or GPU)</li>
+<li>Prepare data: Use existing dataset or gather data yourself</li>
+<li>Tokenize data(if needed): Convert text(sentence or paragraph or whatever) into a list of tokens using a tokenizer</li>
+<li>Build vocab(if needed): Build the vocab from the tokens obtained from the training data. Don’t forget to add any special tokens(pad,bos,eos,etc.)</li>
+<li>Convert tokens to ids: Use the vocab built before to convert tokens into numbers. </li>
+<li>Batch and pad sequences(if needed): Pad the sequences in the same batch since tensors of different lengths can’t be processed. (No need if no batching). Add bos and eos tokens if needed. Convert data into tensors. </li>
+<li>Load data, define model, criterion, optimizer, etc. and start training.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>NLP</tag>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Personal learning footprint</title>
+    <url>/2023/08/05/Personal-learning-footprint/</url>
+    <content><![CDATA[<p><img src="/img/posts/6.jpg" alt="image"></p>
+<blockquote>
+<p>This post is a personal archive of what I’ve read &amp; learnt on the internet, mostly related to coding. </p>
+</blockquote>
+<h3 id="Python-Context-Managers-Generators-Decorators"><a href="#Python-Context-Managers-Generators-Decorators" class="headerlink" title="Python: Context Managers, Generators, Decorators"></a>Python: Context Managers, Generators, Decorators</h3><p><a href="https://medium.com/@sumeetsarkar/trinity-of-context-managers-generators-decorators-4809a991c76b">Trinity of Context Managers, Generators &amp; Decorators</a></p>
+<ul>
+<li><strong>Context Manager</strong>: Serves as a wrapper that executes enter and exit code around a piece of code. Used with <code>with</code>, like <code>open</code> is actually a Context Manager class. All such classes implement <code>__enter__</code> and <code>__exit__</code> functions, and sometimes <code>__init__</code> is used to pass parameters. </li>
+<li><strong>Generator</strong>: Not only returns iterator, but also divides function logics into pieces. First, the function ends when it <code>return</code>, but it resumes from where it paused if it <code>yield</code>. This achieves <strong>Coroutine</strong>(multiple sub-routines on one thread). When we use <code>yield</code> to return the result, the function returns an iterator that can be iterated using <code>for</code>, <code>__iter()</code> and <code>__next__()</code> are implemented implicitly. Guarantees the order. </li>
+<li><strong>Decorator</strong>: Can be function&#x2F;class. The core idea is to pass in the decorated function(as a parameter&#x2F;init args) and do extra things with that function. The function decorator returns an internal function to be called and the class decorator implements <code>__call__()</code></li>
+</ul>
+<h3 id="Python-Metaclass"><a href="#Python-Metaclass" class="headerlink" title="Python: Metaclass"></a>Python: Metaclass</h3><p><a href="https://www.python-engineer.com/posts/metaclasses-python/">What are metaclasses in Python</a></p>
+<ul>
+<li><strong>Metaclass</strong>: Dynamically modify&#x2F;define a User-defined class. Must inherit <code>type</code> class, and implement <code>__new__()</code>. The User-defined class specifies its <code>metaclass</code> when inheriting it. Can modify&#x2F;read the User-defined class’s variables when through its <code>attributes</code> from the <code>__new__</code> function. An example of this is Django’s Model classes. When you want the user to inherit Django’s <code>models.Model</code> class, you expect them to only have <code>models.XXXField</code> variables initially, so that the parent class <code>models.Model</code> can register the model to the database smoothly without errors. A metaclass can control that only <code>models.XXXField</code> are left in the User-defined models.</li>
+</ul>
+<h3 id="Python-Async-Programming"><a href="#Python-Async-Programming" class="headerlink" title="Python: Async Programming"></a>Python: Async Programming</h3><p> <a href="https://superfastpython.com/python-asyncio/#What_is_Asynchronous_Programming">Python Asyncio: The Complete Guide</a><br> <a href="https://superfastpython.com/asyncio-run-coroutine/#Need_to_Run_An_Asyncio_Coroutine">How to Run an Asyncio Coroutine in Python</a><br><code>asyncio</code> is Python’s async library that implements async programming using coroutine. </p>
+<h4 id="Using-async"><a href="#Using-async" class="headerlink" title="Using async"></a>Using <code>async</code></h4><ul>
+<li>Define a coroutine:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">async def custom_coro():</span><br><span class="line">    # do something</span><br></pre></td></tr></table></figure></li>
+<li>Create a coroutine object(no execution):<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">coro = custom_coro()</span><br></pre></td></tr></table></figure></li>
+<li>Execute a coroutine object with <code>asyncio.run</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">asyncio.run(coro)</span><br></pre></td></tr></table></figure></li>
+<li>Execute another coroutine with <code>await</code>: <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">await custom_coro() # must be inside an async context</span><br></pre></td></tr></table></figure></li>
+<li>Execute coroutine by wrapping the object with task <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task = asyncio.create_task(coro) # must be inside an async context</span><br><span class="line">await task # wait for the task to complete</span><br></pre></td></tr></table></figure></li>
+<li>Iterating through <strong>async generator</strong><br>First create an async generator<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">async def hello(cnt):</span><br><span class="line">    for i in range(cnt):</span><br><span class="line">        yield f&quot;Hello&#123;cnt&#125;&quot;</span><br></pre></td></tr></table></figure>
+Run and iterate through it in another async function<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def hello2():</span><br><span class="line">    hello_coro = hello(5)</span><br><span class="line">    async for item in hello_coro: # it&#x27;s an coro object here</span><br><span class="line">        print(item)</span><br><span class="line">asyncio.run(hello2()) </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-Reasons-to-use-asyncio"><a href="#3-Reasons-to-use-asyncio" class="headerlink" title="3 Reasons to use asyncio"></a>3 Reasons to use <code>asyncio</code></h4><ol>
+<li>Need to adopt coroutines. We can have more coroutines than concurrent threads(provided by <code>threading</code>). Coroutines are provided by the language(instead of OS) and are suited to <strong>non-blocking IO</strong> and CPU-bound tasks. Threads&#x2F;processes do multitasking through OS, which is <strong>preemptive multitasking</strong>. Coroutines do multitasking through <strong>cooperating multitasking</strong>, they are functions that can be suspended and resumed.  </li>
+<li>To use Async Programming paradigm. </li>
+<li>To use Non-Block I&#x2F;O.</li>
+</ol>
+<h3 id="OAuth2-An-authorization-framework"><a href="#OAuth2-An-authorization-framework" class="headerlink" title="OAuth2:An authorization framework"></a>OAuth2:An authorization framework</h3><p><a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">An Introduction to OAuth 2</a><br>Works by delegating user authentication to user accounts holder(e.g. Google, Twitter, Github) and authorizing third party apps(e.g. Games using google account to sign in) to access the accounts. </p>
+<h4 id="4-Roles"><a href="#4-Roles" class="headerlink" title="4 Roles"></a>4 Roles</h4><ul>
+<li>Resource Owner: The user who holds the account</li>
+<li>Client: The third party app</li>
+<li>Resource Server: The user accounts holder, has all the accounts </li>
+<li>Authorization Server: Verifies the identity of the user and gives access tokens to the app.<br>(A backend can be both a Resource Server and an Auth Server)</li>
+</ul>
+<h4 id="Abstract-Flow"><a href="#Abstract-Flow" class="headerlink" title="Abstract Flow"></a>Abstract Flow</h4><ol>
+<li>App–Auth Request–&gt;User</li>
+<li>User–Auth Grant–&gt;App</li>
+<li>App–Auth Grant–&gt;Auth Server</li>
+<li>Auth Server–Access Token–&gt;App</li>
+<li>App–Access Token–&gt;Resource Server</li>
+<li>Resource Server–Protected Resource–&gt;App</li>
+</ol>
+<h4 id="App-Registration"><a href="#App-Registration" class="headerlink" title="App Registration"></a>App Registration</h4><p>If you are developing the third party app, you must register the app with the account holder(e.g. Google, Github). After that, you’ll get Client ID and Client Secret to consume the service securely. Client Secret must be kept private. </p>
+<h4 id="3-types-of-Auth-Grant"><a href="#3-types-of-Auth-Grant" class="headerlink" title="3 types of Auth Grant:"></a>3 types of Auth Grant:</h4><ol>
+<li>Auth Code: For server-side apps. Redirection based flow. App must be able to interact with the web browser. </li>
+<li>Client Credentials: For app to access its own service account. Auth Server grants access token for the app to use its own account. </li>
+<li>Device Code: For devices that lack a browser or have limited inputs to get an access token and access a user’s account. The Auth endpoint returns a unique device code(a number or QR code), and the user enters it on a machine to authenticate.</li>
+</ol>
+<h3 id="JWT-JSON-Web-Tokens"><a href="#JWT-JSON-Web-Tokens" class="headerlink" title="JWT: JSON Web Tokens"></a>JWT: JSON Web Tokens</h3><p><a href="https://jwt.io/introduction">Introduction to JSON Web Tokens</a><br>JWT is a standard that defines a way to securely transmit information between parties as a JSON object. </p>
+<h4 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h4><ol>
+<li>Authorization: Once the user is logged in, each subsequent request will include the JWT that allows the user to access resources. </li>
+<li>Info Exchange: JWT is a good way to transmit info between parties because JWTs can be signed.</li>
+</ol>
+<h4 id="3-Parts-of-JWT"><a href="#3-Parts-of-JWT" class="headerlink" title="3 Parts of JWT:"></a>3 Parts of JWT:</h4><ol>
+<li>Header: Usually has type of the token(JWT in this case) and signing algorithm used(e.g. SHA256, RSA). </li>
+<li>Payload: Contains the actual data(e.g. username,userid). There are 3 types of claims(data)<ul>
+<li>Registered: Such as iss (issuer), exp (expiration time), sub (subject), aud (audience)</li>
+<li>Public: Defined at will</li>
+<li>Private: Created to share info between parties that agree on using them</li>
+</ul>
+</li>
+<li>Signature: Used to verify the message wasn’t changed along the way.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>School</tag>
+        <tag>Archive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Audio Deep Learning Notes</title>
+    <url>/2023/08/20/Audio-Deep-Learning-Notes/</url>
+    <content><![CDATA[<blockquote>
+<p>This post serves as a quick note for Audio ML<br><a href="https://towardsdatascience.com/audio-deep-learning-made-simple-part-1-state-of-the-art-techniques-da1d3dff2504">Source</a></p>
+</blockquote>
+<h3 id="Sound"><a href="#Sound" class="headerlink" title="Sound"></a>Sound</h3><p>Audios are signals that can be represented as waves. </p>
+<h4 id="3-basic"><a href="#3-basic" class="headerlink" title="3 basic"></a>3 basic</h4><ul>
+<li>Amplitude</li>
+<li>Frequency </li>
+<li>Shape</li>
+</ul>
+<h4 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h4><p>We can’t represent the continuous waves of the signals, but we can take a series of points with the same interval and measure their value. Each point is a <code>sample</code>, and <code>sample rate</code> is the number of samples per second. </p>
+<p>A common approach to represent audio data is to convert audio into images and process the images. </p>
+<h4 id="Spectrum"><a href="#Spectrum" class="headerlink" title="Spectrum"></a>Spectrum</h4><p>Signals of diff freq can be added together to represent any sound in the real world, and thus any signal can be expressed as a sum of many distinct freq.<br>Spectrum plots all the freq in a signal with amplitude and freq. It is graph of amplitude vs frequency.<br><code>Fundamental Frequency</code>: Lowest freq in a signal.<br><code>Harmonics</code>: Freqs that are multiples of the fundamental frequency. </p>
+<h4 id="Spectrograms"><a href="#Spectrograms" class="headerlink" title="Spectrograms"></a>Spectrograms</h4><p>A signal’s spectrum varies over time, and thus a graph that plots spectrum over time is called <code>spectogram</code>. Spectrogram plots frequency vs time. We take spectrum again and again in different times and join them as a single plot. Amplitude is represented as different colors for each freq, the brighter the higher energy.<br>Spectrograms are produced using Fourier Transforms. </p>
+<h4 id="Audio-Deep-Learning"><a href="#Audio-Deep-Learning" class="headerlink" title="Audio Deep Learning"></a>Audio Deep Learning</h4><ul>
+<li>Start with raw .wav audio file</li>
+<li>Convert audio into spectrogram</li>
+<li>Process spectrogram(image) with standard CNN architectures<br>Tasks:</li>
+<li>Audio Classification: E.g.: What is the type&#x2F;source of the sound? </li>
+<li>Audio Separation &amp; Segmentation: E.g.: Separating audios from different speakers</li>
+<li>Music Genre Classification: Multi-label classification problem. E.g.: Categorize genre, mood, style used for a song. </li>
+<li>Music Generation: E.g.: Generate music from an image</li>
+<li>Music Transcription: E.g.: AI-generated sheet music</li>
+<li>Voice recognition: Another classification problem. E.g.: Recognizing speaker of a speech</li>
+<li>Speech to Text: Extract words from the audio. One of the most challenging applications. </li>
+<li>Text to Speech: Generate audio from the words.</li>
+</ul>
+<h4 id="The-Scales"><a href="#The-Scales" class="headerlink" title="The Scales"></a>The Scales</h4><p>A scale of pitches. Since humans don’t perceive frequencies linearly and we are more sensitive to low frequencies, the Mel Scale was developed to adapt to human’s log-scale perceptions. Similarly, we also perceive loudness(amplitude) logrithmatically, and we use the Decibel Scale for loudness. </p>
+<h4 id="Spectrogram-Optimization"><a href="#Spectrogram-Optimization" class="headerlink" title="Spectrogram Optimization"></a>Spectrogram Optimization</h4><ul>
+<li>Fast Fourier Transform(FFT): FFT is an efficient algorithm to compute the expensive Discrete Fourier Transform(DFT). FFT doesn’t give you how frequencies changed over time though. </li>
+<li>Short-time Fourier Transform(STFT): Breaks audio signal into smaller sections using a sliding time window, do FFT on each section and combines them. This captures frequency variations over time.</li>
+</ul>
+<p>Frequencies are split into multiple bands for better representation. </p>
+<p>Mel Spectrogram Hyperparameters:</p>
+<ul>
+<li>fmin: minimum freq</li>
+<li>fmax: maxmimum freq</li>
+<li>n_mels: number of frequency bands</li>
+</ul>
+<h4 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h4><p>Normal image augmentations such as flip and rotation won’t work with spectrograms since they change the sound it represents. Special augmentations are applied to spectrograms. </p>
+<ul>
+<li>Freq mask: Randomly mask out a range of consecutive freqs by adding horizontal bars. </li>
+<li>Time mask: Similar to freq mask, but use vertical bars.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Machine Learning</tag>
+        <tag>Audio Signal Processing</tag>
+      </tags>
+  </entry>
 </search>

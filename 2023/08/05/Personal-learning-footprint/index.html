@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Personal learning footprint - SoulflareRC&#39;s blog!</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Soulflare,"> 
+    <meta name="description" content="Sharing moments of my life,
+
+This post is a personal archive of what I’ve read &amp;amp; learnt on the internet, mostly related to,"> 
+    <meta name="author" content="SoulflareRC"> 
+    <link rel="alternative" href="atom.xml" title="SoulflareRC&#39;s blog!" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Personal learning footprint - SoulflareRC&#39;s blog!"/>
+    <meta name="twitter:description" content="Sharing moments of my life,
+
+This post is a personal archive of what I’ve read &amp;amp; learnt on the internet, mostly related to,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="Sharing moments of my life,
+
+This post is a personal archive of what I’ve read &amp;amp; learnt on the internet, mostly related to,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="SoulflareRC&#39;s blog!"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Personal learning footprint - SoulflareRC&#39;s blog!"/>
+    <meta property="og:description" content="Sharing moments of my life,
+
+This post is a personal archive of what I’ve read &amp;amp; learnt on the internet, mostly related to,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    
+<link rel="stylesheet" href="/css/tailwind.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">SoulflareRC&#39;s blog!</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://localhost:4000"></a>
+    <div title="play/pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Personal learning footprint</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="QRCode" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Personal learning footprint</h1>
+        <div class="stuff">
+            <span>August 05, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Archive/" rel="tag">Archive</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/School/" rel="tag">School</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><img src="/img/posts/6.jpg" alt="image"></p>
+<blockquote>
+<p>This post is a personal archive of what I’ve read &amp; learnt on the internet, mostly related to coding. </p>
+</blockquote>
+<h3 id="Python-Context-Managers-Generators-Decorators"><a href="#Python-Context-Managers-Generators-Decorators" class="headerlink" title="Python: Context Managers, Generators, Decorators"></a>Python: Context Managers, Generators, Decorators</h3><p><a target="_blank" rel="noopener" href="https://medium.com/@sumeetsarkar/trinity-of-context-managers-generators-decorators-4809a991c76b">Trinity of Context Managers, Generators &amp; Decorators</a></p>
+<ul>
+<li><strong>Context Manager</strong>: Serves as a wrapper that executes enter and exit code around a piece of code. Used with <code>with</code>, like <code>open</code> is actually a Context Manager class. All such classes implement <code>__enter__</code> and <code>__exit__</code> functions, and sometimes <code>__init__</code> is used to pass parameters. </li>
+<li><strong>Generator</strong>: Not only returns iterator, but also divides function logics into pieces. First, the function ends when it <code>return</code>, but it resumes from where it paused if it <code>yield</code>. This achieves <strong>Coroutine</strong>(multiple sub-routines on one thread). When we use <code>yield</code> to return the result, the function returns an iterator that can be iterated using <code>for</code>, <code>__iter()</code> and <code>__next__()</code> are implemented implicitly. Guarantees the order. </li>
+<li><strong>Decorator</strong>: Can be function&#x2F;class. The core idea is to pass in the decorated function(as a parameter&#x2F;init args) and do extra things with that function. The function decorator returns an internal function to be called and the class decorator implements <code>__call__()</code></li>
+</ul>
+<h3 id="Python-Metaclass"><a href="#Python-Metaclass" class="headerlink" title="Python: Metaclass"></a>Python: Metaclass</h3><p><a target="_blank" rel="noopener" href="https://www.python-engineer.com/posts/metaclasses-python/">What are metaclasses in Python</a></p>
+<ul>
+<li><strong>Metaclass</strong>: Dynamically modify&#x2F;define a User-defined class. Must inherit <code>type</code> class, and implement <code>__new__()</code>. The User-defined class specifies its <code>metaclass</code> when inheriting it. Can modify&#x2F;read the User-defined class’s variables when through its <code>attributes</code> from the <code>__new__</code> function. An example of this is Django’s Model classes. When you want the user to inherit Django’s <code>models.Model</code> class, you expect them to only have <code>models.XXXField</code> variables initially, so that the parent class <code>models.Model</code> can register the model to the database smoothly without errors. A metaclass can control that only <code>models.XXXField</code> are left in the User-defined models.</li>
+</ul>
+<h3 id="Python-Async-Programming"><a href="#Python-Async-Programming" class="headerlink" title="Python: Async Programming"></a>Python: Async Programming</h3><p> <a target="_blank" rel="noopener" href="https://superfastpython.com/python-asyncio/#What_is_Asynchronous_Programming">Python Asyncio: The Complete Guide</a><br> <a target="_blank" rel="noopener" href="https://superfastpython.com/asyncio-run-coroutine/#Need_to_Run_An_Asyncio_Coroutine">How to Run an Asyncio Coroutine in Python</a><br><code>asyncio</code> is Python’s async library that implements async programming using coroutine. </p>
+<h4 id="Using-async"><a href="#Using-async" class="headerlink" title="Using async"></a>Using <code>async</code></h4><ul>
+<li>Define a coroutine:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">async def custom_coro():</span><br><span class="line">    # do something</span><br></pre></td></tr></table></figure></li>
+<li>Create a coroutine object(no execution):<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coro = custom_coro()</span><br></pre></td></tr></table></figure></li>
+<li>Execute a coroutine object with <code>asyncio.run</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asyncio.run(coro)</span><br></pre></td></tr></table></figure></li>
+<li>Execute another coroutine with <code>await</code>: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await custom_coro() # must be inside an async context</span><br></pre></td></tr></table></figure></li>
+<li>Execute coroutine by wrapping the object with task <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">task = asyncio.create_task(coro) # must be inside an async context</span><br><span class="line">await task # wait for the task to complete</span><br></pre></td></tr></table></figure></li>
+<li>Iterating through <strong>async generator</strong><br>First create an async generator<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">async def hello(cnt):</span><br><span class="line">    for i in range(cnt):</span><br><span class="line">        yield f&quot;Hello&#123;cnt&#125;&quot;</span><br></pre></td></tr></table></figure>
+Run and iterate through it in another async function<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def hello2():</span><br><span class="line">    hello_coro = hello(5)</span><br><span class="line">    async for item in hello_coro: # it&#x27;s an coro object here</span><br><span class="line">        print(item)</span><br><span class="line">asyncio.run(hello2()) </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-Reasons-to-use-asyncio"><a href="#3-Reasons-to-use-asyncio" class="headerlink" title="3 Reasons to use asyncio"></a>3 Reasons to use <code>asyncio</code></h4><ol>
+<li>Need to adopt coroutines. We can have more coroutines than concurrent threads(provided by <code>threading</code>). Coroutines are provided by the language(instead of OS) and are suited to <strong>non-blocking IO</strong> and CPU-bound tasks. Threads&#x2F;processes do multitasking through OS, which is <strong>preemptive multitasking</strong>. Coroutines do multitasking through <strong>cooperating multitasking</strong>, they are functions that can be suspended and resumed.  </li>
+<li>To use Async Programming paradigm. </li>
+<li>To use Non-Block I&#x2F;O.</li>
+</ol>
+<h3 id="OAuth2-An-authorization-framework"><a href="#OAuth2-An-authorization-framework" class="headerlink" title="OAuth2:An authorization framework"></a>OAuth2:An authorization framework</h3><p><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">An Introduction to OAuth 2</a><br>Works by delegating user authentication to user accounts holder(e.g. Google, Twitter, Github) and authorizing third party apps(e.g. Games using google account to sign in) to access the accounts. </p>
+<h4 id="4-Roles"><a href="#4-Roles" class="headerlink" title="4 Roles"></a>4 Roles</h4><ul>
+<li>Resource Owner: The user who holds the account</li>
+<li>Client: The third party app</li>
+<li>Resource Server: The user accounts holder, has all the accounts </li>
+<li>Authorization Server: Verifies the identity of the user and gives access tokens to the app.<br>(A backend can be both a Resource Server and an Auth Server)</li>
+</ul>
+<h4 id="Abstract-Flow"><a href="#Abstract-Flow" class="headerlink" title="Abstract Flow"></a>Abstract Flow</h4><ol>
+<li>App–Auth Request–&gt;User</li>
+<li>User–Auth Grant–&gt;App</li>
+<li>App–Auth Grant–&gt;Auth Server</li>
+<li>Auth Server–Access Token–&gt;App</li>
+<li>App–Access Token–&gt;Resource Server</li>
+<li>Resource Server–Protected Resource–&gt;App</li>
+</ol>
+<h4 id="App-Registration"><a href="#App-Registration" class="headerlink" title="App Registration"></a>App Registration</h4><p>If you are developing the third party app, you must register the app with the account holder(e.g. Google, Github). After that, you’ll get Client ID and Client Secret to consume the service securely. Client Secret must be kept private. </p>
+<h4 id="3-types-of-Auth-Grant"><a href="#3-types-of-Auth-Grant" class="headerlink" title="3 types of Auth Grant:"></a>3 types of Auth Grant:</h4><ol>
+<li>Auth Code: For server-side apps. Redirection based flow. App must be able to interact with the web browser. </li>
+<li>Client Credentials: For app to access its own service account. Auth Server grants access token for the app to use its own account. </li>
+<li>Device Code: For devices that lack a browser or have limited inputs to get an access token and access a user’s account. The Auth endpoint returns a unique device code(a number or QR code), and the user enters it on a machine to authenticate.</li>
+</ol>
+<h3 id="JWT-JSON-Web-Tokens"><a href="#JWT-JSON-Web-Tokens" class="headerlink" title="JWT: JSON Web Tokens"></a>JWT: JSON Web Tokens</h3><p><a target="_blank" rel="noopener" href="https://jwt.io/introduction">Introduction to JSON Web Tokens</a><br>JWT is a standard that defines a way to securely transmit information between parties as a JSON object. </p>
+<h4 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h4><ol>
+<li>Authorization: Once the user is logged in, each subsequent request will include the JWT that allows the user to access resources. </li>
+<li>Info Exchange: JWT is a good way to transmit info between parties because JWTs can be signed.</li>
+</ol>
+<h4 id="3-Parts-of-JWT"><a href="#3-Parts-of-JWT" class="headerlink" title="3 Parts of JWT:"></a>3 Parts of JWT:</h4><ol>
+<li>Header: Usually has type of the token(JWT in this case) and signing algorithm used(e.g. SHA256, RSA). </li>
+<li>Payload: Contains the actual data(e.g. username,userid). There are 3 types of claims(data)<ul>
+<li>Registered: Such as iss (issuer), exp (expiration time), sub (subject), aud (audience)</li>
+<li>Public: Defined at will</li>
+<li>Private: Created to share info between parties that agree on using them</li>
+</ul>
+</li>
+<li>Signature: Used to verify the message wasn’t changed along the way.</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/422977895.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        <!-- 
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >Comments</div>
+
+ -->
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
